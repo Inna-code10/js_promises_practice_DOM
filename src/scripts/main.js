@@ -1,6 +1,6 @@
 'use strict';
 
-const promise1 = new Promise((resolve, reject) => {
+const firstPromise = new Promise((resolve, reject) => {
   document.addEventListener('click', () => {
     resolve('First promise was resolved');
   });
@@ -10,7 +10,7 @@ const promise1 = new Promise((resolve, reject) => {
   }, 3000);
 });
 
-const promise2 = new Promise((resolve) => {
+const secondPromise = new Promise((resolve) => {
   document.addEventListener('click', () => {
     resolve('Second promise was resolved');
   });
@@ -24,7 +24,7 @@ const promise2 = new Promise((resolve) => {
 let leftClicked = false;
 let rightClicked = false;
 
-const promise3 = new Promise((resolve) => {
+const thirdPromise = new Promise((resolve) => {
   function checkClicked() {
     if (leftClicked && rightClicked) {
       resolve('Third promise was resolved');
@@ -61,6 +61,6 @@ function handleError(error) {
   document.body.appendChild(div);
 }
 
-promise1.then(handleSuccess).catch(handleError);
-promise2.then(handleSuccess).catch(handleError);
-promise3.then(handleSuccess).catch(handleError);
+firstPromise.then(handleSuccess).catch(handleError);
+secondPromise.then(handleSuccess).catch(handleError);
+thirdPromise.then(handleSuccess).catch(handleError);
